@@ -1,6 +1,7 @@
 import math
 import random
 import time
+import os
 
 tasks = {
     "0": "Wash the dishes",
@@ -14,6 +15,9 @@ random = str(math.floor(random.random() * len(tasks)))
 def addTask():
     newTask = input("Enter a new task: ")
     tasks[len(tasks)] = newTask
+    # Create a txt file for persistence
+    with open("tasks.txt", "a") as f:
+        f.write(f"{tasks}")
     print("Task added successfully!")
     time.sleep(1)
     taskChooser()
